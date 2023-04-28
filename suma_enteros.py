@@ -1,12 +1,27 @@
 
+# se importa la libreria tkiter con todas sus funciones
 from tkinter import *
+from tkinter import messagebox
 
 
 #-------------------------
 # funciones de la app
 #------------------------
 
+#sumar
+def sumar():
+    pass
 
+#borrar:
+def borrar():
+    pass
+
+#salir
+def salir():
+    messagebox.showinfo("Suma Enteros 1.0", "La app se va a cerrar")
+    ventana_principal.destroy()
+
+#salir
 #-----------------------------
 #ventana principal de la app
 #---------------------------
@@ -16,7 +31,7 @@ ventana_principal = Tk()
 
 # titulo de la ventana
 
-ventana_principal.title ( "Bandera De Colombia")
+ventana_principal.title ( "Suma de Enteros 1.0")
 
 
 # tamaño de la ventana
@@ -28,7 +43,11 @@ ventana_principal.resizable(False,False)
 
 #color de fondo de la ventana
 ventana_principal.config(bg="blue")
-
+#---------------------------
+# variables globales
+#---------------------------
+x= StringVar()
+y= StringVar()
 
 #---------------------------
 # Frame entrada datos
@@ -60,7 +79,7 @@ lb_x.config(bg="white", fg="blue", font=("Helvetica", 18))
 lb_x.place(x=240, y=60)
 
 #caja de texto para valor x
-entry_x = Entry (Frame_entrada)
+entry_x = Entry (Frame_entrada, textvariable=x)
 entry_x.config(bg="white", fg= "blue", font=("Times New Roman", 18), width=6)
 entry_x.focus_set()
 entry_x.place(x=290,y=60)
@@ -77,11 +96,37 @@ entry_y.place(x=290,y=120)
 #---------------------------
 # Frame operaciones
 #---------------------------
-Frame_white  = Frame (ventana_principal)
-Frame_white .config(bg="white", width=480, height=155)
-Frame_white .place(x=10,y=335)
+Frame_operaciones  = Frame (ventana_principal)
+Frame_operaciones .config(bg="white", width=480, height=100)
+Frame_operaciones .place(x=10,y=200)
+
+#boton para sumar
+bt_sumar = Button (Frame_operaciones,text="Sumar", command=sumar)
+bt_sumar.place(x=45,y=35, width=100, height=30)
+
+#boton para borrar
+bt_borrar=Button(Frame_operaciones, text ="Borrar", command=borrar)
+bt_borrar.place(x=190,y=35, width=100, height=30)
+
+#boton para salir
+bt_salir= Button(Frame_operaciones,text="salir", command=salir)
+bt_salir.place(x=335, y=35, width=100, height=30)
+
+#---------------------
+# frame resultados
+#---------------------
 
 
 
+Frame_resultados = Frame(ventana_principal)
+Frame_resultados.config(bg="black", width=480, height=300)
+Frame_resultados.place(x=10, y=310)
+
+
+# area de texto para los resultados
+
+t_resultados= Text(Frame_resultados)
+t_resultados.config(bg="black" , fg="green yellow", font=("Courier", 20))
+t_resultados.place(x=10,y=10, width=460,height=160)
 #run
 ventana_principal.mainloop()
